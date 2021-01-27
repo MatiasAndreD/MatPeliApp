@@ -11,6 +11,8 @@ class PeliculasProvider {
 
   int _popularesPage = 0;
 
+  bool _cargando = false;
+
   List<Pelicula> _populares = new List();
 
   final _popularesStreamController =
@@ -46,6 +48,9 @@ class PeliculasProvider {
   }
 
   Future<List<Pelicula>> getPopulares() async {
+    if (_cargando) return [];
+
+    _cargando = true;
     _popularesPage++;
 
     final url = Uri.https(_url, '3/movie/popular', {
@@ -60,6 +65,7 @@ class PeliculasProvider {
 
     popularesSink(_populares);
 
+    _cargando = false;
     return resp;
   }
 }

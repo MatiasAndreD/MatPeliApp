@@ -23,36 +23,35 @@ class MovienHorizontal extends StatelessWidget {
 
     return Container(
         height: _screenSize.height * 0.27,
-        child: PageView(
-          controller: _pageController,
-          children: _tarjetas(context),
-        ));
+        child: PageView.builder(
+            controller: _pageController,
+            /* children: _tarjetas(context), */
+            itemCount: peliculas.length,
+            itemBuilder: (context, i) => _tarjeta(peliculas[i], context)));
   }
 
-  List<Widget> _tarjetas(BuildContext context) {
-    return peliculas.map((pelicula) {
-      return Container(
-        margin: EdgeInsets.only(right: 15.0),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: FadeInImage(
-                image: NetworkImage(pelicula.getPosterReturn()),
-                placeholder: AssetImage('assets/loading.gif'),
-                fit: BoxFit.cover,
-                height: 160.0,
-              ),
+  Widget _tarjeta(Pelicula pelicula, BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 15.0),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: FadeInImage(
+              image: NetworkImage(pelicula.getPosterReturn()),
+              placeholder: AssetImage('assets/loading.gif'),
+              fit: BoxFit.cover,
+              height: 160.0,
             ),
-            SizedBox(height: 5.0),
-            Text(
-              pelicula.title,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.caption,
-            )
-          ],
-        ),
-      );
-    }).toList();
+          ),
+          SizedBox(height: 5.0),
+          Text(
+            pelicula.title,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.caption,
+          )
+        ],
+      ),
+    );
   }
 }
