@@ -18,6 +18,9 @@ class Pelicula {
   String backdropPath;
   List<int> genreIds;
   int id;
+
+  String uid;
+
   String originalLanguage;
   String originalTitle;
   String overview;
@@ -65,9 +68,17 @@ class Pelicula {
 
   getPosterReturn() {
     if (posterPath == null) {
-      return 'https://lh3.googleusercontent.com/proxy/2dLHbLXYe2E-qQEzghSdIggW71wawvhzFd8LfDtRlrk9NO3qEG1mn3uJnlVmboqHGhwYDKx6dyF-uENhamuSoM-xyzurOERYdWxGqzX0-7uwMpR53MJ8D64gKzv_SxNhCtTdu1RxWjCWf6hZKJwRZj-Gm8HOt4jx7XIHGpjPw_RaVt0PBTEfLneLApanaabVjEzUlZBU8sT4szTnDye7HH80dPS0BBIje_pFi8u8JaPAMI1pZnpumKEwR7hr5A0ofdreBVqGLOjDj3b2bhQUTQ9X1fFep-sTL6jabCMA5j9PpQ1XmGrOzftTETrybWc4zmkJGcIJGWOaKep5VfqZbd1rOo_NaObSNVrawkwp56fhJbaJhHVPreL0r-4sLzHXqWw_TigOYbSjMx6J9Up5ilcnXDRFxIcsvv39Wqd3zD4laWsG9twl9mSSO_qBV1he_e7A1T67TjLZvPRsa1kr05WHt0r2KRp2jgtbJ2Nqoz0mDQEBgOf_Lu_gGQ6hgRT3YxilwBpQNIgTyc9PSngiUo9tnNAcSd7tMyH8eSqiu_5F8wX_pcp3GXIYAWNnreC1hZuCx3M';
+      return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
     }
 
     return 'https://image.tmdb.org/t/p/w500/$posterPath';
+  }
+
+  getBackgroundPath() {
+    if (backdropPath == null) {
+      return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png';
+    }
+
+    return 'https://image.tmdb.org/t/p/w500/$backdropPath';
   }
 }

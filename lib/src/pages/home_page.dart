@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mat_peli_app/src/providers/peliculas_provider.dart';
+import 'package:mat_peli_app/src/search/search_delegate.dart';
 import 'package:mat_peli_app/src/widgets/card_swiper_widget.dart';
 import 'package:mat_peli_app/src/widgets/movie_horizontal.dart';
 
@@ -26,7 +27,9 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               icon: Icon(Icons.search),
               color: Colors.black,
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context, delegate: PeliculaSearch());
+              },
             )
           ],
         ),
